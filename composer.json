@@ -1,0 +1,24 @@
+{
+    "name": "max13/base-model",
+    "description": "Base model, simply implementing magic methods",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["base-model", "magic"],
+    "authors": [
+        {
+            "name": "Adnan RIHAN",
+            "email": "adnan@rihan.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "MX\\" : "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    }
+}
