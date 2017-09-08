@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers MX\Base\Model
  */
-final class ModelTest extends TestCase
+final class ModelAsObjectTest extends TestCase
 {
     public function testCanBeCreatedEmpty()
     {

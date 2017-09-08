@@ -2,7 +2,7 @@
 
 namespace MX\Base;
 
-class Model implements /*\ArrayAccess,*/ \Countable, \IteratorAggregate
+class Model implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     /**
      * Internal attributes
@@ -44,53 +44,50 @@ class Model implements /*\ArrayAccess,*/ \Countable, \IteratorAggregate
         return new \ArrayIterator($this->attributes, 1);
     }
 
-    // /**
-    //  * Returns the value at specified offset
-    //  *
-    //  * @param string The offset to retrieve
-    //  * @return mixed
-    //  * @abstracting ArrayAccess
-    //  */
-    // public function offsetGet($offset)
-    // {
-    //     return $this->offsetExists($offset) ? $this->attributes[$offset] : null;
-    // }
+    /**
+     * Returns the value at specified offset
+     *
+     * @param string The offset to retrieve
+     * @return mixed
+     * @abstracting ArrayAccess
+     */
+    public function offsetGet($offset)
+    {
+        return $this->__get($offset);
+    }
 
-    // /**
-    //  * Assigns a value to the specified offset
-    //  *
-    //  * @param string The offset to assign the value to
-    //  * @param mixed  The value to set
-    //  * @abstracting ArrayAccess
-    //  */
-    // public function offsetSet($offset, $value) {
-    //     $this->data[$offset] = $value;
-    // }
+    /**
+     * Assigns a value to the specified offset
+     *
+     * @param string The offset to assign the value to
+     * @param mixed  The value to set
+     * @abstracting ArrayAccess
+     */
+    public function offsetSet($offset, $value) {
+        $this->__set($offset, $value);
+    }
 
-    // /**
-    //  * Whether or not an offset exists
-    //  *
-    //  * @param string An offset to check for
-    //  * @access public
-    //  * @return boolean
-    //  * @abstracting ArrayAccess
-    //  */
-    // public function offsetExists($offset) {
-    //     return isset($this->data[$offset]);
-    // }
+    /**
+     * Whether or not an offset exists
+     *
+     * @param string An offset to check for
+     * @return boolean
+     * @abstracting ArrayAccess
+     */
+    public function offsetExists($offset) {
+        return $this->__isset($offset);
+    }
 
-    // /**
-    //  * Unsets an offset
-    //  *
-    //  * @param string The offset to unset
-    //  * @access public
-    //  * @abstracting ArrayAccess
-    //  */
-    // public function offsetUnset($offset) {
-    //     if ($this->offsetExists($offset)) {
-    //         unset($this->data[$offset]);
-    //     }
-    // }
+    /**
+     * Unsets an offset
+     *
+     * @param string The offset to unset
+     * @access public
+     * @abstracting ArrayAccess
+     */
+    public function offsetUnset($offset) {
+        $this->__unset($offset);
+    }
 
     /**
      * Get an attribute by key
